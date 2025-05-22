@@ -61,6 +61,18 @@ public class LivroServiceImpl implements LivroService {
         return true;
     }
 
+    @Override
+    public Optional<Livro> buscaAutor(String autor){
+
+        return repository.getAutor(autor);
+    }
+
+    @Override
+    public Optional<Livro> buscaTitulo(String titulo){
+
+        return repository.getTitulo(titulo);
+    }
+
 
 
 }

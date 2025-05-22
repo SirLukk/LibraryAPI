@@ -13,6 +13,8 @@ public interface LivroService {
     Livro registraLivro(Livro livro);
     Optional<Livro> atualizaLivro(Long id, Livro livro);
     boolean deletaLivro(Long id);
+    Optional<Livro> buscaAutor(String autor);
+    Optional<Livro> buscaTitulo(String titulo);
 
 }
 
