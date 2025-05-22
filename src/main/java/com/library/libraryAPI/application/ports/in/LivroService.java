@@ -1,9 +1,19 @@
-package com.library.libraryAPI.application.service;
+package com.library.libraryAPI.application.ports.in;
 
 
-import org.springframework.stereotype.Service;
+import com.library.libraryAPI.domain.livro.Livro;
 
-@Service
-public class LivroService {
+import java.util.List;
+import java.util.Optional;
+
+public interface LivroService {
+
+    List<Livro> listaLivros();
+    Optional<Livro> buscaLivro(Long id);
+    Livro registraLivro(Livro livro);
+    Optional<Livro> atualizaLivro(Long id, Livro livro);
+    boolean deletaLivro(Long id);
 
 }
+
+
