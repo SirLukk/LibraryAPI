@@ -1,6 +1,7 @@
 package com.library.libraryAPI.adapters.inbound.controller;
 
 
+import com.library.libraryAPI.application.ports.in.LivroService;
 import com.library.libraryAPI.domain.livro.Livro;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation. *;
@@ -12,6 +13,10 @@ import java.util.Optional;
 public class LivroController {
 
     private final LivroService service;
+
+    public LivroController(LivroService service){
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity <List<Livro>>listaLivros(){
@@ -40,7 +45,7 @@ public class LivroController {
     @PutMapping("/{id}")
     public ResponseEntity<Livro> atualizaLivro(@PathVariable Long id, @RequestBody Livro livro){
 
-        Optional<Livro> livroAtualizado = service.AtulizaLivro(id, livro);
+        Optional<Livro> livroAtualizado = service.atualizaLivro(id, livro);
         return livroAtualizado
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
