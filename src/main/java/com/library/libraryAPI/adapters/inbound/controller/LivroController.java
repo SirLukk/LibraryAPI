@@ -60,7 +60,7 @@ public class LivroController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/buscar/autor")
     public ResponseEntity<Livro> buscaAutor(@RequestParam String autor) {
 
         Optional<Livro> autorBuscado = service.buscaAutor(autor);
@@ -70,7 +70,7 @@ public class LivroController {
 
     }
 
-    @GetMapping
+    @GetMapping("/buscar/titulo")
     public ResponseEntity<Livro> buscaTitulo(@RequestParam String titulo) {
 
         Optional<Livro> tituloBuscado = service.buscaTitulo(titulo);

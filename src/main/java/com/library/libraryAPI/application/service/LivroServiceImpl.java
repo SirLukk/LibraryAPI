@@ -64,13 +64,13 @@ public class LivroServiceImpl implements LivroService {
     @Override
     public Optional<Livro> buscaAutor(String autor){
 
-        return repository.getAutor(autor);
+        return repository.findByAutor(autor);
     }
 
     @Override
     public Optional<Livro> buscaTitulo(String titulo){
 
-        return repository.getTitulo(titulo);
+        return repository.findByTitulo(titulo);
     }
 
 
