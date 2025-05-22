@@ -14,28 +14,27 @@ public class LivroController {
 
     private final LivroService service;
 
-    public LivroController(LivroService service){
+    public LivroController(LivroService service) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity <List<Livro>>listaLivros(){
+    public ResponseEntity<List<Livro>> listaLivros() {
         List<Livro> livros = service.listaLivros();
         return ResponseEntity.ok(livros);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Livro> buscaLivro(@PathVariable Long id){
+    public ResponseEntity<Livro> buscaLivro(@PathVariable Long id) {
 
         Optional<Livro> livro = service.buscaLivro(id);
         return livro
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
-
     }
 
     @PostMapping
-    public ResponseEntity<Livro> registraLivro(@RequestBody Livro livro){
+    public ResponseEntity<Livro> registraLivro(@RequestBody Livro livro) {
 
         Livro livroRegistrado = service.registraLivro(livro);
         return ResponseEntity.ok(livroRegistrado);
@@ -43,7 +42,7 @@ public class LivroController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Livro> atualizaLivro(@PathVariable Long id, @RequestBody Livro livro){
+    public ResponseEntity<Livro> atualizaLivro(@PathVariable Long id, @RequestBody Livro livro) {
 
         Optional<Livro> livroAtualizado = service.atualizaLivro(id, livro);
         return livroAtualizado
@@ -59,5 +58,25 @@ public class LivroController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<Livro> buscaAutor(@RequestParam String autor) {
+
+        Optional<Livro> autorBuscado = service.buscaAutor(autor);
+        return autorBuscado
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+
+    }
+
+    @GetMapping
+    public ResponseEntity<Livro> buscaTitulo(@RequestParam String titulo) {
+
+        Optional<Livro> tituloBuscado = service.buscaTitulo(titulo);
+        return tituloBuscado
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+
     }
 }
