@@ -62,12 +62,10 @@ public class LivroController {
     }
 
     @GetMapping("/buscar/autor")
-    public ResponseEntity<Livro> buscaAutor(@RequestParam String autor) {
+    public ResponseEntity<List<Livro>> buscaAutor(@RequestParam String autor) {
 
-        Optional<Livro> autorBuscado = service.buscaAutor(autor);
-        return autorBuscado
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        List<Livro> autorBuscado = service.buscaAutor(autor);
+        return ResponseEntity.ok(autorBuscado);
 
     }
 

@@ -13,6 +13,6 @@ public interface LivroRepositoryPort {
     Livro save(Livro livro);
     void deleteById(Long id);
     boolean existsById(Long id);
-    Optional<Livro> findByAutor(String autor);
+    List<Livro> findByAutor(String autor);
     Optional<Livro> findByTitulo(String titulo);
 }

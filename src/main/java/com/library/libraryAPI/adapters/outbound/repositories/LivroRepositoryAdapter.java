@@ -49,11 +49,11 @@ public class LivroRepositoryAdapter implements LivroRepositoryPort {
     }
 
     @Override
-    public Optional<Livro> findByAutor(String autor) {
+    public List<Livro> findByAutor(String autor) {
         return repository.findByAutorContainingIgnoreCase(autor)
                 .stream()
-                .findFirst()
-                .map(this::toDomain);
+                .map(this::toDomain)
+                .toList();
     }
 
     @Override
