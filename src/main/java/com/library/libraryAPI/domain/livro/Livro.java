@@ -1,9 +1,11 @@
 package com.library.libraryAPI.domain.livro;
 
 
+
+
 public class Livro {
 
-    private Long id;
+    private String id;
     private String titulo;
     private String autor;
     private int ano;
@@ -13,7 +15,7 @@ public class Livro {
 
     }
 
-    public Livro(Long id, String titulo, String autor, int ano, String genero){
+    public Livro(String id, String titulo, String autor, int ano, String genero){
         this.id = id;
         this.autor = autor;
         this.titulo = titulo;
@@ -21,11 +23,11 @@ public class Livro {
         this.genero = genero;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

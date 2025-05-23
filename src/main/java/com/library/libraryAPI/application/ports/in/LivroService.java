@@ -9,10 +9,10 @@ import java.util.Optional;
 public interface LivroService {
 
     List<Livro> listaLivros();
-    Optional<Livro> buscaLivro(Long id);
+    Optional<Livro> buscaLivro(String id);
     Livro registraLivro(Livro livro);
-    Optional<Livro> atualizaLivro(Long id, Livro livro);
-    boolean deletaLivro(Long id);
+    Optional<Livro> atualizaLivro(String id, Livro livro);
+    boolean deletaLivro(String id);
     List<Livro> buscaAutor(String autor);
     Optional<Livro> buscaTitulo(String titulo);
 

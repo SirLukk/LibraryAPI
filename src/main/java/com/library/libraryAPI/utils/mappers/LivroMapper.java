@@ -2,6 +2,7 @@ package com.library.libraryAPI.utils.mappers;
 
 import com.library.libraryAPI.adapters.outbound.persistance.LivroEntity;
 import com.library.libraryAPI.domain.livro.Livro;
+import java.util.UUID;
 
 public class LivroMapper {
 
@@ -9,7 +10,7 @@ public class LivroMapper {
         LivroEntity entity = new LivroEntity();
 
         if (livro.getId() != null)
-            entity.setId(livro.getId());
+            entity.setId(UUID.fromString(livro.getId()));
 
         entity.setTitulo(livro.getTitulo());
         entity.setAutor(livro.getAutor());
@@ -20,7 +21,7 @@ public class LivroMapper {
 
     public static Livro toDomain(LivroEntity entity) {
         return new Livro(
-                entity.getId(),
+                entity.getId().toString(),
                 entity.getTitulo(),
                 entity.getAutor(),
                 entity.getAno(),

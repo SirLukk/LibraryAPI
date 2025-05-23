@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
@@ -27,8 +28,8 @@ public class LivroRepositoryAdapter implements LivroRepositoryPort {
     }
 
     @Override
-    public Optional<Livro> findById(Long id) {
-        return repository.findById(id)
+    public Optional<Livro> findById(String id) {
+        return repository.findById(UUID.fromString(id))
                 .map(this::toDomain);
     }
 
@@ -39,13 +40,13 @@ public class LivroRepositoryAdapter implements LivroRepositoryPort {
     }
 
     @Override
-    public void deleteById(Long id) {
-        repository.deleteById(id);
+    public void deleteById(String id) {
+        repository.deleteById(UUID.fromString(id));
     }
 
     @Override
-    public boolean existsById(Long id) {
-        return repository.existsById(id);
+    public boolean existsById(String id) {
+        return repository.existsById(UUID.fromString(id));
     }
 
     @Override
@@ -64,10 +65,9 @@ public class LivroRepositoryAdapter implements LivroRepositoryPort {
                 .map(this::toDomain);
     }
 
-    // Conversão de Entity para Domain
     private Livro toDomain(LivroEntity entity) {
         return new Livro(
-                entity.getId(),
+                entity.getId().toString(),
                 entity.getTitulo(),
                 entity.getAutor(),
                 entity.getAno(),
@@ -75,18 +75,18 @@ public class LivroRepositoryAdapter implements LivroRepositoryPort {
         );
     }
 
-    // Conversão de Domain para Entity
     private LivroEntity toEntity(Livro livro) {
         LivroEntity entity = new LivroEntity();
 
-        if (livro.getId() != null) {
-            entity.setId(livro.getId());
+        if (livro.getId() != null && !livro.getId().isBlank()) {
+            entity.setId(UUID.fromString(livro.getId()));
         }
 
         entity.setTitulo(livro.getTitulo());
         entity.setAutor(livro.getAutor());
         entity.setAno(livro.getAno());
         entity.setGenero(livro.getGenero());
+
         return entity;
     }
 }

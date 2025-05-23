@@ -5,14 +5,15 @@ import com.library.libraryAPI.domain.livro.Livro;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface LivroRepositoryPort {
 
     List<Livro> findAll();
-    Optional<Livro> findById(Long id);
+    Optional<Livro> findById(String id);
     Livro save(Livro livro);
-    void deleteById(Long id);
-    boolean existsById(Long id);
+    void deleteById(String id);
+    boolean existsById(String id);
     List<Livro> findByAutor(String autor);
     Optional<Livro> findByTitulo(String titulo);
 }

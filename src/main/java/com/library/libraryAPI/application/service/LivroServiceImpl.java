@@ -28,7 +28,7 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    public Optional<Livro> buscaLivro(Long id){
+    public Optional<Livro> buscaLivro(String id){
 
         return repository.findById(id);
 
@@ -43,7 +43,7 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    public Optional<Livro> atualizaLivro(Long id, Livro dados) {
+    public Optional<Livro> atualizaLivro(String id, Livro dados) {
         return repository.findById(id).map(existing -> {
             existing.setTitulo(dados.getTitulo());
             existing.setAutor(dados.getAutor());
@@ -54,7 +54,7 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    public boolean deletaLivro(Long id) {
+    public boolean deletaLivro(String id) {
         if (!repository.existsById(id)) {
             return false;
         }
@@ -64,6 +64,7 @@ public class LivroServiceImpl implements LivroService {
 
     @Override
     public List<Livro> buscaAutor(String autor){
+
 
         return repository.findByAutor(autor);
     }

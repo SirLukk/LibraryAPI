@@ -9,13 +9,15 @@ import lombok.Data;
 
 import jakarta.persistence.Entity;
 
+import java.util.UUID;
+
 @Data
 @Entity
 public class LivroEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @NotNull
     @Size(min = 1, max = 255)
