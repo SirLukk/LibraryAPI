@@ -36,6 +36,7 @@ public class LivroController {
     @PostMapping
     public ResponseEntity<Livro> registraLivro(@RequestBody Livro livro) {
 
+        livro.setId(null);
         Livro livroRegistrado = service.registraLivro(livro);
         return ResponseEntity.ok(livroRegistrado);
 

@@ -78,7 +78,11 @@ public class LivroRepositoryAdapter implements LivroRepositoryPort {
     // Conversão de Domain para Entity
     private LivroEntity toEntity(Livro livro) {
         LivroEntity entity = new LivroEntity();
-        entity.setId(livro.getId());
+
+        if (livro.getId() != null) {
+            entity.setId(livro.getId());
+        }
+
         entity.setTitulo(livro.getTitulo());
         entity.setAutor(livro.getAutor());
         entity.setAno(livro.getAno());
