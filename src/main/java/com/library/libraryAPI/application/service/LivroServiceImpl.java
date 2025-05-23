@@ -37,19 +37,20 @@ public class LivroServiceImpl implements LivroService {
     @Override
     public Livro registraLivro(Livro livro){
 
+        livro.setId(null);
         return repository.save(livro);
 
     }
 
     @Override
-    public Optional<Livro> atualizaLivro(Long id, Livro livro){
-
-        if (!repository.existsById(id)) {
-            return Optional.empty();
-        }
-        livro.setId(id);
-        return Optional.of(repository.save(livro));
-
+    public Optional<Livro> atualizaLivro(Long id, Livro dados) {
+        return repository.findById(id).map(existing -> {
+            existing.setTitulo(dados.getTitulo());
+            existing.setAutor(dados.getAutor());
+            existing.setAno(dados.getAno());
+            existing.setGenero(dados.getGenero());
+            return repository.save(existing);  // ← garante UPDATE, não criação
+        });
     }
 
     @Override
