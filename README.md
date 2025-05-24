@@ -91,7 +91,7 @@ cd library-api
 java -jar target/libraryAPI-0.0.1-SNAPSHOT.jar
 ```
 
-4. Acesse: `http://localhost:8080/api/livros`
+4. Acesse: `http://localhost:8080/swagger-ui/index.html`
 
 ---
 
