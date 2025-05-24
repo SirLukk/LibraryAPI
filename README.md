@@ -142,6 +142,24 @@ terraform apply
 
 ---
 
+🔧 Melhorias Futuras
+
+Algumas ideias e melhorias planejadas para evoluir o projeto:
+
+✅ Validação de Regras de Negócio: Validações mais robustas no domínio, como ano de publicação não negativo ou maior que o atual.
+
+🛡️ Cobertura de Testes: Aumentar cobertura com testes unitários e de integração usando JUnit e Testcontainers.
+
+🔐 Autenticação e Autorização: Implementar segurança com Spring Security e JWT para proteger endpoints.
+
+📦 Versionamento de API: Suporte a múltiplas versões da API (ex: /api/v1/livros).
+
+🧪 Integração com ferramentas de CI/CD: Automatizar pipeline com GitHub Actions ou GitLab CI.
+
+🧰 Interface Frontend (opcional): Criar uma interface web simples com React ou Angular para consumir a API.
+
+Contribuições e sugestões são bem-vindas! 🚀
+
 ## ✅ Contribuições
 
 Contribuições são bem-vindas! Sinta-se livre para abrir issues ou PRs.
